@@ -1,6 +1,6 @@
 const yargs = require('yargs/yargs')
 const { hideBin } = require('yargs/helpers')
-const argv = yargs(hideBin(process.argv)).argv
+// const argv = yargs(hideBin(process.argv)).argv
 
 // console.log(argv);
 
@@ -15,7 +15,7 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
       break;
 
     case 'get':
-      const contact = await operations.getContactById();
+      const contact = await operations.getContactById(id);
       console.log('getContactById', contact);
       break;
 
@@ -24,7 +24,8 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
       break;
 
     case 'remove':
-      await operations.removeContact();
+      const removeContact = await operations.removeContact(id);
+      console.log(removeContact);
       break;
 
     default:
@@ -32,4 +33,8 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
   }
 }
 
+const arr = hideBin(process.argv);
+const { argv } = yargs(arr).option('id', {
+type: "string",
+});
 invokeAction(argv);

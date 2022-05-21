@@ -24,9 +24,10 @@ const getContactById = async (id) => {
   const contact = allContacts.find(contact => contact.id === id);
   return contact ? contact : null;
 };
+// getContactById('1').then(value => console.log(value));
 
 
-const removeContact = async (id) => {
+const removeContact = async(id) => {
   // ...твой код
   const allContacts = await listContacts();
   const index = allContacts.findIndex(contact => contact.id === id);
@@ -37,9 +38,11 @@ const removeContact = async (id) => {
     allContacts.splice(index, 1);
     await fs.writeFile(contactPath, JSON.stringify(allContacts));
   }
- 
   return deleteContact ? deleteContact : null;
 };
+// removeContact('1').then(value => console.log(value));
+
+
 
 
 const addContact = async(name, email, phone) => {
