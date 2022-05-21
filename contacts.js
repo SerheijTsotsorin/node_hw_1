@@ -59,7 +59,6 @@ const addContact = async(name, email, phone) => {
   return newContact;
 }
 
-// addContact(name: "Serhii", email: "serg@gmail.com", phone: "0930000111");
 
 module.exports = {
   listContacts, getContactById, removeContact, addContact

@@ -2,7 +2,7 @@ const yargs = require('yargs/yargs')
 const { hideBin } = require('yargs/helpers')
 const argv = yargs(hideBin(process.argv)).argv
 
-console.log(argv);
+// console.log(argv);
 
 const operations = require ('./contacts')
 
@@ -21,11 +21,10 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
 
     case 'add':
       await operations.addContact(name, email, phone)
-  
       break;
 
     case 'remove':
-      await operations.removeContact(id);
+      await operations.removeContact();
       break;
 
     default:
@@ -34,15 +33,3 @@ const invokeAction = async ({ action, id, name, email, phone }) => {
 }
 
 invokeAction(argv);
-
-// module.exports = {
-//     invokeAction
-// }
-// invokeAction({action: 'listContacts'})
-// //  invoke({action: 'getById', id: 'cf050c0e-3bac-4a51-9557-58e4b7fe3359'})
-// // invoke({
-// //     action: 'updateById',
-// //     id: 'cf050c0e-3bac-4a51-9557-58e4b7fe3359',
-// //     name: 'mango',
-// //     price: 4300,
-// // })
